@@ -1,0 +1,30 @@
+{
+  "AppName": {
+    "en": "kontrol"
+  },
+  "BundleIdentifier": "kontrol",
+  "AppDescription": {
+    "en": "A small app that listens and exectues commands through websockets and returns player object"
+  },
+  "AcceptedLinkTypes": [
+    "playlist"
+  ],
+  "BundleType": "Application",
+  "BundleVersion": "0.2",
+  "DefaultTabs": [
+    {
+      "arguments": "index",
+      "title": {
+        "en": "Home"
+      }
+    }
+  ],
+  "Dependencies": {
+    "api": "1.10.2",
+    "views": "1.18.1"
+  },
+  "SupportedLanguages": [
+    "en"
+  ],
+  "VendorIdentifier": "co.spotify"
+}
