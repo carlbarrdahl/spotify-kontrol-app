@@ -3,15 +3,17 @@ require([
 ], function(commands) {
 
 	var ws;
-	var url = 'ws://localhost:8080';
-	var status = document.querySelector('#status');
+	var serverUrl = 'ws://localhost:8080';
 
+	var status = document.querySelector('[role=status]');
+	status.textContent = 'Connecting to: ' + serverUrl;
 
 	(function connect() {
-		ws = new WebSocket(url);
+
+		ws = new WebSocket(serverUrl);
 
 		ws.onopen = function() {
-			status.textContent = 'Connected';
+			status.textContent = 'Connected!';
 		};
 
 		ws.onclose = function() {

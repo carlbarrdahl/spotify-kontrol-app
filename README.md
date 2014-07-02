@@ -3,6 +3,9 @@ kontrol
 
 A small app that listens and exectues commands through websockets and returns player object
 
+## How to use
+For now you have to set the Websocket server manually in /app/main.js
+
 ## Examples
 Pause current track
 `ws.send({command: 'pause'});`
