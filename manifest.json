@@ -10,7 +10,7 @@
     "playlist"
   ],
   "BundleType": "Application",
-  "BundleVersion": "0.2",
+  "BundleVersion": "0.3",
   "DefaultTabs": [
     {
       "arguments": "index",
@@ -20,7 +20,7 @@
     }
   ],
   "Dependencies": {
-    "api": "1.10.2",
+    "api": "1.38.0",
     "views": "1.18.1"
   },
   "SupportedLanguages": [

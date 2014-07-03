@@ -3,7 +3,8 @@ require([
 ], function(commands) {
 
 	var ws;
-	var serverUrl = 'ws://localhost:8080';
+	var channel;
+	var serverUrl = 'ws://kontrol-app.herokuapp.com';
 
 	var status = document.querySelector('[role=status]');
 	status.textContent = 'Connecting to: ' + serverUrl;
@@ -14,6 +15,8 @@ require([
 
 		ws.onopen = function() {
 			status.textContent = 'Connected!';
+
+			setInterval(ping, 20000);
 		};
 
 		ws.onclose = function() {
@@ -24,13 +27,26 @@ require([
 		ws.onmessage = function(event) {
 			var data = JSON.parse(event.data);
 
-			// Execute command and send the result back through the websocket
-			commands.execute(data).done(function(result) {
+			if (data.msg === 'channel') {
 
-				ws.send(JSON.stringify(result));
+				channel = data.payload;
+				status.textContent = 'Connected to channel: ' + data.payload;
 
-			});
+			} else {
+
+				// Execute command and send the result back through the websocket
+				commands.execute(data).done(function(result) {
+					result.channel = channel;
+					ws.send(JSON.stringify(result));
+
+				});
+			}
+
 		};
 	})();
+
+	function ping() {
+		ws.send(JSON.stringify({msg: 'ping'}));
+	}
 
 });
